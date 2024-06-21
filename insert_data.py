@@ -5,28 +5,6 @@ from underwater.models import WaterQuality
 from underwater.models import Sensor
 from datetime import datetime
 
-'''
-class Command(BaseCommand):
-    help = 'Inserts fish data from CSV file into the database'
-
-    
-    def handle(self, *args, **kwargs):
-        with open('underwater/data/fish.csv', newline='', encoding='utf-8') as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                Fish.objects.create(
-                    species=row['Species'],
-                    weight=float(row['Weight(g)']),
-                    length1=float(row['Length1(cm)']),
-                    length2=float(row['Length2(cm)']),
-                    length3=float(row['Length3(cm)']),
-                    height=float(row['Height(cm)']),
-                    width=float(row['Width(cm)']),
-                )
-        self.stdout.write(self.style.SUCCESS('Data inserted successfully!'))
-    
-    
-'''
 
 
 '''
