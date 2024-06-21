@@ -196,35 +196,3 @@ def underwater(request):
     print(f"修改一")
 
     return render(request, 'html/dash-UnderwaterSystem.html', context)
-
-'''
-
-def monitor_waterquality(request):
-    results = []
-    if request.method == 'POST':
-        month = request.POST.get('month')
-        day = request.POST.get('date')
-        area = request.POST.get('area')
-        print(f"Received data - Month: {month}, Day: {day}, Area: {area}") 
-
-        # 验证表单数据
-        if month and day and area:
-            try:
-                month = int(month)
-                day = int(day)
-
-                # 获取当前年份
-                current_year = datetime.now().year
-
-                # 使用 month 和 day 进行过滤
-                results = WaterQuality.objects.filter(
-                    monitoring_time__month=month,
-                    monitoring_time__day=day,
-                    section_name=area
-                )
-            except ValueError:
-                # 处理无效的月份和日期输入
-                pass
-
-    return render(request, 'html/dash-UnderwaterSystem.html', {'results': results})
-'''

@@ -16,15 +16,7 @@ class Fish(models.Model):
     
 
 class WaterQuality(models.Model):
-    section_name = models.CharField(max_length=100)
-    monitoring_time = models.DateTimeField()
-    water_quality_category = models.CharField(max_length=10)
-    water_temperature = models.FloatField(null=True, blank=True)
-    pH = models.FloatField(null=True, blank=True)
-    dissolved_oxygen = models.FloatField(null=True, blank=True)
-    conductivity = models.FloatField(null=True, blank=True)
-    turbidity = models.FloatField(null=True, blank=True)
-    permanganate_index = models.FloatField(null=True, blank=True)
+    
     ammonia_nitrogen = models.FloatField(null=True, blank=True)
     total_phosphorus = models.FloatField(null=True, blank=True)
     total_nitrogen = models.FloatField(null=True, blank=True)
