@@ -29,56 +29,7 @@ class Command(BaseCommand):
 '''
 
 
-'''
-def safe_float(value, default=None):
-    try:
-        return float(value)
-    except ValueError:
-        return default
 
-class Command(BaseCommand):
-    help = 'Inserts water quality data from multiple CSV files into the database'
-
-    def insert_data_from_csv(self, file_path):
-        with open(file_path, newline='', encoding='utf-8') as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                # 解析监测时间
-                try:
-                    # 获取当前年份
-                    current_year = datetime.now().year
-                    # 解析月份和日期部分
-                    monitoring_time = datetime.strptime(row['监测时间'], '%m-%d %H:%M')
-                    # 将解析后的日期时间对象加上当前年份
-                    monitoring_time = monitoring_time.replace(year=current_year)
-                except ValueError:
-                    # 跳过无效的监测时间
-                    continue
-                
-                WaterQuality.objects.create(
-                    section_name=row['断面名称'],
-                    monitoring_time=monitoring_time,
-                    water_quality_category=row['水质类别'],
-                    water_temperature=safe_float(row['水温(℃)']),
-                    pH=safe_float(row['pH(无量纲)']),
-                    dissolved_oxygen=safe_float(row['溶解氧(mg/L)']),
-                    conductivity=safe_float(row['电导率(μS/cm)']),
-                    turbidity=safe_float(row['浊度(NTU)']),
-                    permanganate_index=safe_float(row['高锰酸盐指数(mg/L)']),
-                    ammonia_nitrogen=safe_float(row['氨氮(mg/L)']),
-                    total_phosphorus=safe_float(row['总磷(mg/L)']),
-                    total_nitrogen=safe_float(row['总氮(mg/L)']),
-                    site_status=row['站点情况'],
-                )
-    def handle(self, *args, **kwargs):
-        #csv_files = ['北洋桥.csv', '大红桥.csv', '大套桥.csv','海河大闸.csv','万家码头.csv']
-        csv_files = ['add.csv']
-        for file in csv_files:
-            self.insert_data_from_csv(f'underwater/data/{file}')
-        self.stdout.write(self.style.SUCCESS('Data inserted successfully!'))
-    
-    
-'''
 
 def safe_date(date_str, default=None):
     formats_to_try = ['%Y-%m-%d %H:%M', '%Y-%m-%d', '%Y-%m-%d %H:%M:%S']
