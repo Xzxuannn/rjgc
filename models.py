@@ -55,8 +55,3 @@ class Sensor(models.Model):
     warranty_expiration_date = models.DateField()
     start_date = models.DateField()
 
-    def get_running_time(self):
-        current_date = now().date()  # 只获取当前时间的日期部分
-        running_time = current_date - self.start_date
-        print(f"Current date: {current_date}, Start date: {self.start_date}, Running time: {running_time.days}")
-        return running_time.days
