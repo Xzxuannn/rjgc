@@ -5,16 +5,9 @@ import json
 from datetime import datetime
 
 WATER_QUALITY_STANDARDS = {
-    'Ⅰ' :{
-        'ph_min': 6,
-        'ph_max': 9,
-        'dissolved_oxygen':7.5,           
-        'permanganate_index':2,          
-        'ammonia_nitrogen':0.15,           
-        'total_phosphorus':0.02              
-    },
+
     'Ⅱ': {
-        'ph_min': 6,
+        'ph_min': 777,
         'ph_max': 9,
         'dissolved_oxygen':6,           #>=6
         'permanganate_index':4,          #高锰酸钾<=4
